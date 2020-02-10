@@ -1,0 +1,162 @@
+{
+    "apiVersion": "kubevirt.io/v1alpha3",
+    "kind": "VirtualMachineInstance",
+    "metadata": {
+        "annotations": {
+            "kubevirt.io/latest-observed-api-version": "v1alpha3",
+            "kubevirt.io/storage-observed-api-version": "v1alpha3"
+        },
+        "creationTimestamp": "2020-01-28T09:12:41Z",
+        "finalizers": [
+            "foregroundDeleteVirtualMachine"
+        ],
+        "generateName": "v2v-rhel7-2nic-2disk-igor",
+        "generation": 11,
+        "labels": {
+            "kubevirt.io/domain": "v2v-rhel7-2nic-2disk-igor",
+            "kubevirt.io/nodeName": "host-172-16-0-31",
+            "kubevirt.io/size": "small",
+            "vm.kubevirt.io/name": "v2v-rhel7-2nic-2disk-igor"
+        },
+        "name": "v2v-rhel7-2nic-2disk-igor",
+        "namespace": "default",
+        "ownerReferences": [
+            {
+                "apiVersion": "kubevirt.io/v1alpha3",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "VirtualMachine",
+                "name": "v2v-rhel7-2nic-2disk-igor",
+                "uid": "0fd4ef1f-c8e0-443d-af2f-8cf2e88361d9"
+            }
+        ],
+        "resourceVersion": "6276834",
+        "selfLink": "/apis/kubevirt.io/v1alpha3/namespaces/default/virtualmachineinstances/v2v-rhel7-2nic-2disk-igor",
+        "uid": "7d2223dc-00fc-4f46-b78f-26c1167edf8e"
+    },
+    "spec": {
+        "domain": {
+            "cpu": {
+                "cores": 1,
+                "sockets": 1,
+                "threads": 1
+            },
+            "devices": {
+                "disks": [
+                    {
+                        "bootOrder": 2,
+                        "disk": {
+                            "bus": "virtio"
+                        },
+                        "name": "hdd1"
+                    },
+                    {
+                        "bootOrder": 3,
+                        "disk": {
+                            "bus": "virtio"
+                        },
+                        "name": "hdd2"
+                    }
+                ],
+                "interfaces": [
+                    {
+                        "bootOrder": 1,
+                        "bridge": {},
+                        "model": "virtio",
+                        "name": "nic1"
+                    }
+                ],
+                "networkInterfaceMultiqueue": true,
+                "rng": {}
+            },
+            "features": {
+                "acpi": {
+                    "enabled": true
+                }
+            },
+            "firmware": {
+                "uuid": "0ef6ce33-7689-5c57-bcb5-57c8c2a537ff"
+            },
+            "machine": {
+                "type": "q35"
+            },
+            "resources": {
+                "requests": {
+                    "cpu": "100m",
+                    "memory": "2G"
+                }
+            }
+        },
+        "evictionStrategy": "LiveMigrate",
+        "hostname": "v2v-rhel7-2nic-2disk-igor",
+        "networks": [
+            {
+                "name": "nic1",
+                "pod": {}
+            }
+        ],
+        "terminationGracePeriodSeconds": 0,
+        "volumes": [
+            {
+                "name": "hdd1",
+                "persistentVolumeClaim": {
+                    "claimName": "hdd1-4d9cw"
+                }
+            },
+            {
+                "name": "hdd2",
+                "persistentVolumeClaim": {
+                    "claimName": "hdd2-9k66m"
+                }
+            }
+        ]
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": null,
+                "message": "cannot migrate VMI with a bridge interface connected to a pod network",
+                "reason": "InterfaceNotLiveMigratable",
+                "status": "False",
+                "type": "LiveMigratable"
+            },
+            {
+                "lastProbeTime": "2020-01-28T09:14:45Z",
+                "lastTransitionTime": null,
+                "status": "True",
+                "type": "AgentConnected"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2020-01-28T09:13:10Z",
+                "status": "True",
+                "type": "Ready"
+            }
+        ],
+        "guestOSInfo": {
+            "id": "rhel",
+            "kernelRelease": "3.10.0-862.el7.x86_64",
+            "kernelVersion": "#1 SMP Wed Mar 21 18:14:51 EDT 2018",
+            "name": "Red Hat Enterprise Linux Server",
+            "prettyName": "Red Hat Enterprise Linux",
+            "version": "7.5",
+            "versionId": "7.5"
+        },
+        "interfaces": [
+            {
+                "interfaceName": "eth0",
+                "ipAddress": "10.128.0.41/23",
+                "ipAddresses": [
+                    "10.128.0.41/23"
+                ],
+                "mac": "0a:58:0a:80:00:29",
+                "name": "nic1"
+            }
+        ],
+        "migrationMethod": "LiveMigration",
+        "nodeName": "host-172-16-0-31",
+        "phase": "Running",
+        "qosClass": "Burstable"
+    }
+}
